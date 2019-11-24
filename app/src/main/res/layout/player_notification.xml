@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+    <ImageButton
+        android:id="@+id/prev_image_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:padding="@dimen/notification_padding"
+        android:src="@drawable/ic_skip_previous_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/start_image_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:padding="@dimen/notification_padding"
+        android:src="@drawable/ic_play_arrow_black_24dp"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/pause_image_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:padding="@dimen/notification_padding"
+        android:src="@drawable/ic_pause_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/next_image_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:padding="@dimen/notification_padding"
+        android:src="@drawable/ic_skip_next_black_24dp" />
+
+</LinearLayout>

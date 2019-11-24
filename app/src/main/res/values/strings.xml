@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">androidschool_dictaphone</string>
+    <string name="start_record_string">Начать запись</string>
+
+    <string name="label_record_notificaction">Record Service</string>
+    <string name="content_text_record_notificaction">Запись</string>
+    <string name="stop">Стоп</string>
+    <string name="label_player_notificaction">Player</string>
+</resources>
