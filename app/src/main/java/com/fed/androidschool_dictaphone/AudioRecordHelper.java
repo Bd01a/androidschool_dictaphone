@@ -20,13 +20,13 @@ class AudioRecordHelper {
     }
 
     void startRecoding(@NonNull File dir) {
-        String fileName;
+        int number;
         if (dir.list() != null && dir.list().length > 0) {
-            fileName = dir.list()[dir.list().length - 1].substring(0, dir.list()[dir.list().length - 1].length() - 4) + 1;
+            number = Integer.valueOf(dir.list()[dir.list().length - 1].substring(6, dir.list()[dir.list().length - 1].length() - 4)) + 1;
         } else {
-            fileName = "record1";
+            number = 1;
         }
-        mMediaRecoder.setOutputFile(dir + "/" + fileName + ".mp3");
+        mMediaRecoder.setOutputFile(dir + "/record" + number + ".mp3");
         try {
             mMediaRecoder.prepare();
             mMediaRecoder.start();

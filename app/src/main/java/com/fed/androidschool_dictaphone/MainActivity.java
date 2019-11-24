@@ -90,28 +90,31 @@ public class MainActivity extends AppCompatActivity {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonPlay();
-                Message message = new Message();
-                message.what = MainActivity.MSG_START;
-                message.replyTo = mMainActivityMessenger;
-                try {
-                    mPlayerMessenger.send(message);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
+                if (getFilesDir().listFiles().length > 0) {
+                    buttonPlay();
+                    Message message = new Message();
+                    message.what = MainActivity.MSG_START;
+                    message.replyTo = mMainActivityMessenger;
+                    try {
+                        mPlayerMessenger.send(message);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
         mPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                buttonPause();
-                Message message = new Message();
-                message.what = MainActivity.MSG_PAUSE;
-                try {
-                    mPlayerMessenger.send(message);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
+                if (getFilesDir().listFiles().length > 0) {
+                    buttonPause();
+                    Message message = new Message();
+                    message.what = MainActivity.MSG_PAUSE;
+                    try {
+                        mPlayerMessenger.send(message);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
@@ -119,13 +122,17 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonChangeTrack(1);
+                if (getFilesDir().listFiles().length > 0) {
+                    buttonChangeTrack(1);
+                }
             }
         });
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonChangeTrack(-1);
+                if (getFilesDir().listFiles().length > 0) {
+                    buttonChangeTrack(-1);
+                }
             }
         });
 
@@ -152,16 +159,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buttonPlay() {
+
         mPauseButton.setVisibility(View.VISIBLE);
         mStartButton.setVisibility(View.GONE);
         if (!mIsPlaying) {
             Intent intent = new Intent(MainActivity.this, PlayerService.class);
             startService(intent);
             mIsPlaying = true;
+
             startPlay(getFilesDir().listFiles()[mOnGetChosen.getChosen()].getAbsolutePath());
+
         } else {
             resumePlay();
         }
+
     }
 
     private void buttonPause() {
